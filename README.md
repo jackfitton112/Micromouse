@@ -51,4 +51,6 @@ Program tracer now works, a list is passed as the following
 - XX = int (number of steps)
 - F = forward
 - R = right 90 degrees
-- L - left 90 degrees 
+- L - left 90 degrees
+
+all that needs adding now is some form of API to get updates as mouse traverses maze
