@@ -1,10 +1,11 @@
 import random
 import pygame
+from progress.bar import Bar
+
 size = (200, 200)
 zoom = 2
 coords = [(int(size[0]/2), int(size[1]/2))] # will contain [(x, y), (x, y)] of already passed nodes (and starting node)
 paths = [] # will contain [((xa, ya), (xb, yb)), (...)] of paths
-screen = pygame.display.set_mode((size[0]*zoom, size[1]*zoom))
 
 #   0
 #  3 1
@@ -38,14 +39,19 @@ def getTarget(start, direction): # maths to see where it is going to be
     elif direction == 3:
         return (start[0]-1, start[1])
 
+bar = Bar('Generating Maze Nodes', max=size[0]*size[1])
+
 for place in coords:
+    bar.next()
     for n in range(0, 4):
         if random.randint(0, 4):
             if checkPath(place, n):
                 paths.append((place, getTarget(place, n)))
                 coords.append(getTarget(place, n))
-
-
+bar.finish()
+print("Maze done")
+print("Rendering Maze")
+screen = pygame.display.set_mode((size[0]*zoom, size[1]*zoom))
 for path in paths:
     draw(path[0], path[1])
 pygame.display.flip()
