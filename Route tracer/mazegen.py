@@ -1,6 +1,6 @@
 import random
 import pygame
-size = (20, 20)
+size = (75, 75)
 coords = [(0, 0)] # will contain [(x, y), (x, y)] of already passed nodes
 paths = [] # will contain [((xa, ya), (xb, yb)), (...)] of paths
 screen = pygame.display.set_mode((size[0]*10, size[1]*10))
@@ -33,11 +33,11 @@ def getTarget(start, direction): # maths to see where it is going
         return (start[0]+1, start[1])
     elif direction == 2:
         return (start[0], start[1]+1)
-    else:
+    elif direction == 3:
         return (start[0]-1, start[1])
 
 for place in coords:
-    for n in range(0, 3):
+    for n in range(0, 4):
         if random.randint(0, 4):
             if checkPath(place, n):
                 paths.append((place, getTarget(place, n)))
@@ -47,3 +47,9 @@ for place in coords:
 for path in paths:
     draw(path[0], path[1])
 pygame.display.flip()
+
+running = True
+while running:
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      running = False
