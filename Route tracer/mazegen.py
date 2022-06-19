@@ -1,9 +1,10 @@
 import random
 import pygame
-size = (75, 75)
-coords = [(0, 0)] # will contain [(x, y), (x, y)] of already passed nodes
+size = (80, 80)
+zoom = 5
+coords = [(40, 40)] # will contain [(x, y), (x, y)] of already passed nodes (and starting node)
 paths = [] # will contain [((xa, ya), (xb, yb)), (...)] of paths
-screen = pygame.display.set_mode((size[0]*10, size[1]*10))
+screen = pygame.display.set_mode((size[0]*zoom, size[1]*zoom))
 
 #   0
 #  3 1
@@ -12,8 +13,9 @@ screen = pygame.display.set_mode((size[0]*10, size[1]*10))
 # y
 # |
 # V
+
 def draw(start, end):
-    pygame.draw.line(screen, (0,255,0), (start[0]*10, start[1]*10), (end[0]*10, end[1]*10), 3)
+    pygame.draw.line(screen, (0,255,0), (start[0]*zoom, start[1]*zoom), (end[0]*zoom, end[1]*zoom), int(zoom/2))
 
 def checkPath(place, direction): # check if path valid
     target = getTarget(place, direction)
@@ -26,7 +28,7 @@ def checkPath(place, direction): # check if path valid
     else:
         return True
 
-def getTarget(start, direction): # maths to see where it is going
+def getTarget(start, direction): # maths to see where it is going to be
     if direction == 0:
         return (start[0], start[1]-1)
     elif direction == 1:
