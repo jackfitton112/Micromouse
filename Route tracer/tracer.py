@@ -24,7 +24,7 @@ pygame.draw.circle(screen, (0,128,0), (10,10), 10, 5)
 #end
 pygame.draw.circle(screen, (255,0,0), (290,290), 10, 5)
 
-run(list)
+#run(list)
 mazegen(300,300)
 #flips display for correct orientation
 pygame.display.flip()
