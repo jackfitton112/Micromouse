@@ -1,8 +1,8 @@
 import random
 import pygame
-size = (80, 80)
-zoom = 5
-coords = [(40, 40)] # will contain [(x, y), (x, y)] of already passed nodes (and starting node)
+size = (200, 200)
+zoom = 2
+coords = [(int(size[0]/2), int(size[1]/2))] # will contain [(x, y), (x, y)] of already passed nodes (and starting node)
 paths = [] # will contain [((xa, ya), (xb, yb)), (...)] of paths
 screen = pygame.display.set_mode((size[0]*zoom, size[1]*zoom))
 
