@@ -39,4 +39,16 @@ else:
 
   ```
 
-  this will be used to map out the maze 
+  this will be used to map out the maze
+
+
+## Update!
+
+Program tracer now works, a list is passed as the following
+
+`list = ["XXF","R","XXF","L"]`
+
+- XX = int (number of steps)
+- F = forward
+- R = right 90 degrees
+- L - left 90 degrees 
